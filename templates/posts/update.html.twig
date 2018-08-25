@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello !{% endblock %}
+
+{% block body %}
+    <a href="/posts">Retour</a>
+    {{form_start(form)}}
+    {{form_widget(form)}}
+    {{form_end(form)}}
+{% endblock %}

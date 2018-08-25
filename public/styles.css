@@ -1,0 +1,19 @@
+.postLink {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.postLink:hover {
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
+.postBody{
+    background-color: grey;
+    color: #FFFFFF;
+    padding-left: 10px;
+}
+
+ul { 
+    list-style-type: none; 
+}

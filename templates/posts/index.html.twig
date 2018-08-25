@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Le super blog!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h1>Voici la liste des posts ! ✅</h1>
+    <div>
+    <a href="/posts/create">ajouter un post</a>
+    </div>
+    <div>
+        <ul>
+        {% for post in list %}
+            <li>
+                <a class="postLink" href="/posts/display/{{post.id}}">
+                    <div class="postBody">
+                        <h3> {{post.title}} </h3>
+                        {{post.content}} <br>
+                        <hr width="30">
+                        Par <strong>{{ post.author }}</strong> le <strong>{{ post.createdAt|date('d/m/Y à H:i:s') }}</strong> {% if post.updatedAt %} modifié le <strong>{{ post.updatedAt|date('d/m/Y à H:i:s') }}</strong> {% endif %}<br>
+                        Nombre de commentaires : {{post.comments|length}}<br>
+                        <div><a href="/posts/edit/{{post.id}}"><button>Modifier</button></a><a href="/posts/delete/{{post.id}}"><button>Supprimer</button></a></div>
+                        <hr>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

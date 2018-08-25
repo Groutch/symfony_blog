@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vue du post{% endblock %}
+
+{% block body %}
+    <style>
+        .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+        .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+    </style>
+    <div class="example-wrapper">
+        <a href="/posts">Retour</a>
+        <div class="postBody">
+            <h3> {{post.title}} </h3>
+            {{post.content}} <br>
+            <hr width="30">
+            {{ post.author }} le {{ post.createdAt|date('d/m/Y à H:i:s') }} {% if post.updatedAt %} modifié le {{ post.updatedAt|date('d/m/Y à H:i:s') }}{% endif %}<br>
+            <div><a href="/posts/edit/{{post.id}}"><button>Modifier</button></a><a href="/posts/delete/{{post.id}}"><button>Supprimer</button></a></div>
+            <hr>
+        </div>
+        <div>
+            <a href="/posts/addcomment/{{post.id}}"><button>Ajouter commentaire</button></a>
+            <h3>Commentaires:</h3>
+            <ul>
+            {% for comment in post.comments %}
+                <li>
+                    {{comment.content}} <br>
+                    Par {{ comment.author }} le {{ comment.createdAt|date('d/m/Y à H:i:s') }} <br>
+                    <hr>
+                </li>
+            {% endfor %}
+            </ul>
+        </div>
+</div>
+{% endblock %}
